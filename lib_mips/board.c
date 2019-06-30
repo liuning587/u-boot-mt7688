@@ -536,7 +536,7 @@ static int init_func_ram (void)
 static int display_banner(void)
 {
    
-	printf ("\n\nWidora by mango,V1.0.7\n\n");
+	printf ("\n\nWidora by mango,V1.0.8\n\n");
 	return (0);
 }
 
@@ -1958,7 +1958,7 @@ void board_init_r (gd_t *id, ulong dest_addr)
 	printf( "\nif you press the WPS button will automatically enter the Update mode\n");
 	int counter = 0;
 	for(i=0;i<10;i++){
-		udelay(150000);
+		udelay(70000);
 		printf( "\n%d",i);
 		if(detect_wps())
 		{
@@ -2948,12 +2948,12 @@ void gpio_test( void )
 	udelay(600000);
 	for(i=0;i<100;i++){
 	printf("\nall led off\n");
-	RALINK_REG(0xb0000620)=0xffffffff;
-	RALINK_REG(0xb0000624)=0xffffffff;
+	RALINK_REG(0xb0000620)=0x55555555;
+	RALINK_REG(0xb0000624)=0x55555555;
 	udelay(200000);
 	printf("\nall led on\n");
-	RALINK_REG(0xb0000620)=0x0;
-	RALINK_REG(0xb0000624)=0x0;
+	RALINK_REG(0xb0000620)=0xaaaaaaaa;
+	RALINK_REG(0xb0000624)=0xaaaaaaaa;
 	udelay(200000);
 	if(detect_wps())
 	break;
